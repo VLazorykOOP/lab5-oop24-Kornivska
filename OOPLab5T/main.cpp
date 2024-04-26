@@ -121,6 +121,101 @@ public:
         cin >> grade;
     }
 };
+// Оголошення класу Window
+class Window {
+protected:
+    int width;
+    int height;
+
+public:
+    Window(int w, int h) : width(w), height(h) {}
+
+    virtual void draw() const {
+        cout << "Drawing a window (" << width << "x" << height << ")" << endl;
+    }
+};
+
+// Оголошення класу TitledWindow
+class TitledWindow : public Window {
+private:
+    string title;
+
+public:
+    TitledWindow(int w, int h, const string& t) : Window(w, h), title(t) {}
+
+    void draw() const override {
+        cout << "Drawing a titled window (" << width << "x" << height << ") with title: " << title << endl;
+    }
+};
+
+// Оголошення класу ButtonedWindow
+class ButtonedWindow : public Window {
+private:
+    string buttonText;
+
+public:
+    ButtonedWindow(int w, int h, const string& bt) : Window(w, h), buttonText(bt) {}
+
+    void draw() const override {
+        cout << "Drawing a buttoned window (" << width << "x" << height << ") with button: " << buttonText << endl;
+    }
+};
+
+int main() {
+    int choice;
+    cout << "Select a task:" << endl;
+    cout << "1. Task 1 - Person and Student classes" << endl;
+    cout << "2. Task 2 - Window, TitledWindow, and ButtonedWindow classes" << endl;
+    cout << "3. Task 3 - Student and GraduateStudent classes" << endl;
+    cout << "Your choice: ";
+    cin >> choice;
+
+    switch (choice) {
+    case 1: {
+        // Task 1 - Person and Student classes
+        // Тестування класу Person
+        Person person1;
+        cout << "Enter data for Person 1:" << endl;
+        person1.input();
+        cout << "\nPerson 1:" << endl;
+        person1.print();
+
+        // Тестування класу Student
+        Student student1;
+        cout << "\nEnter data for Student 1:" << endl;
+        student1.input();
+        cout << "\nStudent 1:" << endl;
+        student1.print();
+        break;
+    }
+    case 2: {
+        // Task 2 - Window, TitledWindow, and ButtonedWindow classes
+        // Створення об'єктів різних класів вікон
+        Window window(200, 100);
+        TitledWindow titledWindow(300, 150, "My Titled Window");
+        ButtonedWindow buttonedWindow(250, 120, "Click Me");
+
+        // Виклик методу draw() для кожного об'єкта
+        window.draw();
+        titledWindow.draw();
+        buttonedWindow.draw();
+        break;
+    }
+    case 3: {
+        // Task 3 - Student and GraduateStudent classes
+        // Тестування класу GraduateStudent
+        GraduateStudent gs1;
+        cout << "Enter data for GraduateStudent 1:" << endl;
+        cin >> gs1; // Введення з клавіатури
+        cout << gs1 << endl; // Виведення на екран
+        break;
+    }
+    default:
+        cout << "Invalid choice!" << endl;
+    }
+
+    return 0;
+}
 
 
 
