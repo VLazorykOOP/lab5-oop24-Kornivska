@@ -52,6 +52,75 @@ protected:
     double weight;
 
 public:
+    // Конструктор за замовчуванням
+    Person() : lastName("NoLastName"), firstName("NoFirstName"), middleName("NoMiddleName"), age(0), weight(0.0) {}
+
+    // Конструктор з параметрами
+    Person(const string& last, const string& first, const string& middle, int a, double w)
+        : lastName(last), firstName(first), middleName(middle), age(a), weight(w) {}
+
+    // Деструктор
+    virtual ~Person() {}
+
+    // Функція друку
+    virtual void print() const {
+        cout << "Last Name: " << lastName << ", First Name: " << firstName
+            << ", Middle Name: " << middleName << ", Age: " << age << ", Weight: " << weight << endl;
+    }
+
+    // Функція перепризначення віку
+    void setAge(int newAge) {
+        age = newAge;
+    }
+
+    // Функція для введення даних з клавіатури
+    void input() {
+        cout << "Enter Last Name: ";
+        cin >> lastName;
+        cout << "Enter First Name: ";
+        cin >> firstName;
+        cout << "Enter Middle Name: ";
+        cin >> middleName;
+        cout << "Enter Age: ";
+        cin >> age;
+        cout << "Enter Weight: ";
+        cin >> weight;
+    }
+};
+
+// Похідний клас - школяр
+class Student : public Person {
+public:
+    int grade; // Рік навчання
+
+    // Конструктор за замовчуванням
+    Student() : Person(), grade(0) {}
+
+    // Конструктор з параметрами
+    Student(const string& last, const string& first, const string& middle, int a, double w, int g = 0)
+        : Person(last, first, middle, a, w), grade(g) {}
+
+    // Деструктор
+    ~Student() {}
+
+    // Функція друку
+    void print() const override {
+        Person::print();
+        cout << "Grade: " << grade << endl;
+    }
+
+    // Функція перепризначення класу
+    void setGrade(int newGrade) {
+        grade = newGrade;
+    }
+
+    // Функція для введення даних з клавіатури
+    void input() {
+        Person::input();
+        cout << "Enter Grade: ";
+        cin >> grade;
+    }
+};
 
 
 
