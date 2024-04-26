@@ -42,6 +42,16 @@ public:
         return *this;
     }
 };
+// Оголошення класу Person
+class Person {
+protected:
+    string lastName;
+    string firstName;
+    string middleName;
+    int age;
+    double weight;
+
+public:
 
 
 
