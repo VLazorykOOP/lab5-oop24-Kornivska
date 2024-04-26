@@ -29,5 +29,20 @@ public:
         getline(is, gs.thesisTitle);
         return is;
     }
+    // Конструктор копіювання для студента-дипломника
+    GraduateStudent(const GraduateStudent& other) : name(other.name), age(other.age), thesisTitle(other.thesisTitle) {}
+
+    // Оператор присвоєння для студента-дипломника
+    GraduateStudent& operator=(const GraduateStudent& other) {
+        if (this != &other) {
+            name = other.name;
+            age = other.age;
+            thesisTitle = other.thesisTitle;
+        }
+        return *this;
+    }
+};
+
+
 
 
