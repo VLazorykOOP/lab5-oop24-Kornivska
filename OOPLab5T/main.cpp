@@ -18,4 +18,16 @@ public:
         os << "Name: " << gs.name << ", Age: " << gs.age << ", Thesis Title: " << gs.thesisTitle;
         return os;
     }
+    // Перевизначення оператора введення з потоку для студента-дипломника
+    friend istream& operator>>(istream& is, GraduateStudent& gs) {
+        cout << "Enter name: ";
+        is >> gs.name;
+        cout << "Enter age: ";
+        is >> gs.age;
+        cout << "Enter thesis title: ";
+        is.ignore(); // Щоб уникнути пропуску наступного вводу
+        getline(is, gs.thesisTitle);
+        return is;
+    }
+
 
